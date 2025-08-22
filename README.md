@@ -1,39 +1,34 @@
 # Movie Recommender System
 
-A simple **content-based movie recommendation system** built with **Python, Streamlit, and scikit-learn**.  
-It suggests similar movies based on movie metadata (like tags, genres, and descriptions).
-
----
+This is a content-based movie recommender system built using Python, Streamlit, and machine learning techniques. The app suggests movies similar to a user-selected movie and displays their posters using the OMDb API.
 
 ## Features
-- Select a movie and get **5 recommended movies** instantly.
-- Uses **cosine similarity** on TF-IDF vectors of movie tags.
-- Fetches posters dynamically via the **OMDb API**.
-- Simple **Streamlit UI** for interaction.
+- Select a movie from a dropdown list.
+- Get 5 recommended movies based on similarity.
+- Movie posters fetched automatically using OMDb API.
+- Simple, interactive UI built with Streamlit.
 
----
+## Files
+- `app.py`: Streamlit app that runs the movie recommender.
+- `movie_dict.pkl`: Contains movie metadata (movie_id, title, tags).
+- `similarity.pkl`: Precomputed similarity matrix (not included in the repo).
+- `requirements.txt`: Python dependencies.
+- `Movie Recommender.ipynb`: Jupyter/Colab notebook with the machine learning code to generate the similarity matrix.
 
-## Tech Stack
-- **Python**
-- **Pandas / NumPy**
-- **scikit-learn**
-- **Streamlit**
-- **OMDb API**
+## How it Works
+1. Movie metadata (title, genres, tags) is vectorized using **TF-IDF**.
+2. A **cosine similarity matrix** is computed between all movies.
+3. For a selected movie, the system finds the top 5 most similar movies.
+4. Posters for recommended movies are fetched from the OMDb API.
 
----
 ## Note on `similarity.pkl`
+The project requires a file called `similarity.pkl`, which stores the similarity matrix for all movies.  
+- This file is **not included in the repository** because of size restrictions.  
+- To generate it, run the provided `Movie Recommender.ipynb` notebook. It will compute the matrix and save it using `pickle`.  
+- Once generated, place the file in the root directory alongside `app.py` and `movie_dict.pkl`.
 
-This project requires a file called `similarity.pkl`, which contains the precomputed similarity matrix for movies.  
-
-- The file is not included in this repository because it is too large.  
-- To generate it yourself, you can run the Jupyter/Colab notebook `Movie Recommender.ipynb`, which explains the full training process.  
-- Alternatively, you can compute it by applying **TF-IDF vectorization** on the movie tags dataset and then calculating the cosine similarity matrix.  
-
-Once generated, place the `similarity.pkl` file in the project root directory alongside `app.py` and `movie_dict.pkl`.
----
-
-## How to Run Locally
-1. Clone the repo:
+## Setup Instructions
+1. Clone this repository:
    ```bash
    git clone https://github.com/raj130088/movie-recommender.git
    cd movie-recommender
