@@ -6,7 +6,6 @@ import requests
 # Your OMDb API Key
 OMDB_API_KEY = "a8d88535"
 
-# Function to fetch poster from OMDb using movie title
 def fetch_poster(movie_title):
     url = f"http://www.omdbapi.com/?t={movie_title}&apikey={OMDB_API_KEY}"
     response = requests.get(url)
@@ -14,10 +13,8 @@ def fetch_poster(movie_title):
     if data.get("Poster") and data["Poster"] != "N/A":
         return data["Poster"]
     else:
-        # fallback if poster is not available
         return "https://via.placeholder.com/500x750?text=No+Poster"
 
-# Recommendation function
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
@@ -31,7 +28,6 @@ def recommend(movie):
         recommended_movies_poster.append(fetch_poster(movie_title))
     return recommended_movies, recommended_movies_poster
 
-# Streamlit UI
 st.title('🎬 Movie Recommender System')
 
 movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
