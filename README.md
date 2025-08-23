@@ -15,6 +15,18 @@ This is a content-based movie recommender system built using Python, Streamlit, 
 - `requirements.txt`: Python dependencies.
 - `Movie Recommender.ipynb`: Jupyter/Colab notebook with the machine learning code to generate the similarity matrix.
 
+## Dataset
+
+This project uses the **TMDB Movie Metadata** dataset from Kaggle:  
+[TMDB Movie Metadata Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
+
+Steps:
+1. Download the dataset from Kaggle.  
+2. Use the dataset in the model-building notebook (`.ipynb` file).  
+3. The notebook generates:
+   - `movie_dict.pkl` → metadata about movies  
+   - `similarity.pkl` → similarity matrix (not included in repo due to size)  
+
 ## How it Works
 1. Movie metadata (title, genres, tags) is vectorized using **TF-IDF**.
 2. A **cosine similarity matrix** is computed between all movies.
